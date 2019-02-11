@@ -1,4 +1,4 @@
-import newrelic
+import newrelic.agent as newrelic_agent
 
 class TracerMiddleware:
   
@@ -6,4 +6,4 @@ class TracerMiddleware:
     return f'{req.method} {req.relative_uri}'
 
   def process_request(self, req, resp):
-    newrelic.agent.set_transaction_name(self.get_transaction_name(req))
+    newrelic_agent.set_transaction_name(self.get_transaction_name(req))
